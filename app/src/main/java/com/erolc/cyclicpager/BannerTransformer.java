@@ -6,7 +6,7 @@ import android.view.View;
 
 
 /**
- * Created by Administrator on 2018/2/9 0009.
+ * Created by Erolc on 2019/2/9 0009.
  */
 
 public class BannerTransformer implements ViewPager.PageTransformer {

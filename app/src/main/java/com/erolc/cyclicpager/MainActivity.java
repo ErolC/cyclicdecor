@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
         }
         decor = new CyclicDecor.Builder(binding.pager)
                 .setAdapter(adapter)
-                .setIndicator(binding.indicator)
-                .automatic(false)
+//                .setIndicator(binding.indicator)
+                .automatic(3000)
+                .isFastSwitch(false)
                 .build();
         adapter.setDataList(temps);
-        binding.pager.setPageTransformer(false, new BannerTransformer());
 
 
     }

@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * 这个类是viewpager的包装类
+ *
  */
 public class CyclicDecor {
     private static final int DEFAULT_PAUSE_TIME = 1000;
@@ -18,6 +18,7 @@ public class CyclicDecor {
     private ViewPager pager;
     private Indicator indicator;
     private boolean isAuto;
+    private boolean isFastSwitch = true;
 
     private int interval = DEFAULT_PAUSE_TIME;
     private static Runnable runnable;
@@ -32,6 +33,7 @@ public class CyclicDecor {
         private CyclicAdapter adapter;
         private Indicator indicator;
         private boolean isAuto = true;
+        private boolean isFastSwitch = true;
         private int interval = DEFAULT_PAUSE_TIME;
 
         public Builder(ViewPager pager) {
@@ -45,6 +47,11 @@ public class CyclicDecor {
 
         public Builder setIndicator(Indicator indicator) {
             this.indicator = indicator;
+            return this;
+        }
+
+        public Builder isFastSwitch(boolean isFastSwitch) {
+            this.isFastSwitch = isFastSwitch;
             return this;
         }
 
@@ -77,6 +84,7 @@ public class CyclicDecor {
             decor.adapter = adapter;
             decor.isAuto = isAuto;
             decor.interval = interval;
+            decor.isFastSwitch = isFastSwitch;
             decor.config();
             return decor;
         }
@@ -90,7 +98,6 @@ public class CyclicDecor {
                     indicator.setAdapter(adapter);
                 }
                 pager.setCurrentItem(position);
-                //下面问题目前的解决办法，就是加载真实页数的view
                 if (adapter.getCount() > 4) {
                     pager.setOffscreenPageLimit(adapter.getRealCount());
                 }
@@ -133,7 +140,20 @@ public class CyclicDecor {
     public void start() {
         if (runnable == null) {
             runnable = () -> {
-                pager.setCurrentItem(pager.getCurrentItem() + 1);
+                int position = pager.getCurrentItem() + 1;
+                if (isFastSwitch) {
+                    pager.setCurrentItem(position);
+                }else{
+                    try {
+                        scrollToItem(position);
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
                 pager.postDelayed(runnable, interval);
             };
             pager.postDelayed(runnable, interval);
