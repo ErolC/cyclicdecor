@@ -1,4 +1,4 @@
-package com.erolc.cyclicviewpager.adapter;
+package com.erolc.cyclicdecor.adapter;
 
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
@@ -6,7 +6,8 @@ import androidx.viewpager.widget.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.erolc.cyclicviewpager.R;
+
+import com.erolc.cyclicdecor.R;
 
 import java.util.ArrayList;
 import java.util.List;

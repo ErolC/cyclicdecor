@@ -1,4 +1,4 @@
-package com.erolc.cyclicviewpager.adapter;
+package com.erolc.cyclicdecor.adapter;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.erolc.cyclicviewpager.BR;
-import com.erolc.cyclicviewpager.R;
+import com.erolc.cyclicdecor.BR;
+import com.erolc.cyclicdecor.R;
 
 public abstract class CyclicDBAdapter<T> extends CyclicAdapter<T> {
     private LayoutInflater inflate;

@@ -1,4 +1,4 @@
-package com.erolc.cyclicviewpager.indicators;
+package com.erolc.cyclicdecor.indicators;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,8 +8,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.erolc.cyclicviewpager.R;
-import com.erolc.cyclicviewpager.adapter.CyclicAdapter;
+import com.erolc.cyclicdecor.R;
+import com.erolc.cyclicdecor.adapter.CyclicAdapter;
 
 /**
  * Created by ErolC on 2018/3/21.
@@ -123,6 +123,8 @@ public class CyclicIndicator extends View implements Indicator {
             r = 5;
             if (itemHeight == 0) {
                 itemHeight = 5;
+            }else{
+                r = itemHeight/2;
             }
             realHeight = getPaddingTop() + getPaddingBottom() + (shape == RECT ? itemHeight*2 : r * 2);
             realHeight = Math.min(size, realHeight);
@@ -130,6 +132,8 @@ public class CyclicIndicator extends View implements Indicator {
             r = (size - getPaddingBottom() - getPaddingTop()) / 2;
             if (itemHeight == 0) {
                 itemHeight = r*2;
+            }else{
+                r = itemHeight/2;
             }
             realHeight = size;
         }
@@ -213,5 +217,6 @@ public class CyclicIndicator extends View implements Indicator {
 
     @Override
     public void onPageSelected(int position) {
+
     }
 }

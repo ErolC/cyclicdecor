@@ -1,4 +1,4 @@
-package com.erolc.cyclicviewpager.utils;
+package com.erolc.cyclicdecor.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

@@ -1,8 +1,8 @@
-package com.erolc.cyclicviewpager.pageChanges;
+package com.erolc.cyclicdecor.pageChanges;
 
 import androidx.viewpager.widget.ViewPager;
 
-import com.erolc.cyclicviewpager.adapter.CyclicAdapter;
+import com.erolc.cyclicdecor.adapter.CyclicAdapter;
 
 /**
  * 这个类是viewpager循环的核心类

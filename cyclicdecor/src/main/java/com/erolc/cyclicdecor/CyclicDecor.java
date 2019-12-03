@@ -1,10 +1,10 @@
-package com.erolc.cyclicviewpager;
+package com.erolc.cyclicdecor;
 
 import androidx.viewpager.widget.ViewPager;
 
-import com.erolc.cyclicviewpager.adapter.CyclicAdapter;
-import com.erolc.cyclicviewpager.indicators.Indicator;
-import com.erolc.cyclicviewpager.pageChanges.CyclicPageChangeListener;
+import com.erolc.cyclicdecor.adapter.CyclicAdapter;
+import com.erolc.cyclicdecor.indicators.Indicator;
+import com.erolc.cyclicdecor.pageChanges.CyclicPageChangeListener;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -17,7 +17,7 @@ public class CyclicDecor {
     private CyclicAdapter adapter;
     private ViewPager pager;
     private Indicator indicator;
-    private boolean isAuto;
+    private int isAuto = 0;
     private boolean isFastSwitch = true;
 
     private int interval = DEFAULT_PAUSE_TIME;
@@ -32,9 +32,9 @@ public class CyclicDecor {
         private ViewPager pager;
         private CyclicAdapter adapter;
         private Indicator indicator;
-        private boolean isAuto = true;
+        private boolean isAuto;
         private boolean isFastSwitch = true;
-        private int interval = DEFAULT_PAUSE_TIME;
+        private int interval = 0;
 
         public Builder(ViewPager pager) {
             this.pager = pager;
@@ -68,6 +68,9 @@ public class CyclicDecor {
          * @return 建造者本身
          */
         public Builder automatic(int interval) {
+            if (interval<700){
+                throw new RuntimeException("interval must be greater than 700ms");
+            }
             this.interval = interval;
             return this;
         }
@@ -80,6 +83,8 @@ public class CyclicDecor {
          */
         public Builder automatic(boolean isAuto) {
             this.isAuto = isAuto;
+            if (isAuto)
+            this.interval = DEFAULT_PAUSE_TIME;
             return this;
         }
 
@@ -87,7 +92,7 @@ public class CyclicDecor {
             CyclicDecor decor = new CyclicDecor(pager);
             decor.indicator = indicator;
             decor.adapter = adapter;
-            decor.isAuto = isAuto;
+            decor.isAuto = isAuto?1:interval == 0?-1:0;
             decor.interval = interval;
             decor.isFastSwitch = isFastSwitch;
             decor.config();
@@ -117,7 +122,7 @@ public class CyclicDecor {
                 public void onPageStateChange(int state) {
                     switch (state) {
                         case 0:
-                            if (isAuto) start();
+                            if (isAuto != -1) start();
                             break;
                         case 1:
                             stop();
@@ -137,12 +142,15 @@ public class CyclicDecor {
             pager.addOnPageChangeListener(indicator);
         }
 
-        if (isAuto) {
+        if (isAuto == 1) {
             start();
         }
     }
 
     public void start() {
+        if (isAuto == -1) {
+            return;
+        }
         if (runnable == null) {
             runnable = () -> {
                 int position = pager.getCurrentItem() + 1;

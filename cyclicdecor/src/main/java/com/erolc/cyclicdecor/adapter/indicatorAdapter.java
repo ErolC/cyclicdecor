@@ -1,10 +1,10 @@
-package com.erolc.cyclicviewpager.adapter;
+package com.erolc.cyclicdecor.adapter;
 
 import androidx.databinding.BindingAdapter;
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 
-import com.erolc.cyclicviewpager.indicators.CyclicIndicator;
+import com.erolc.cyclicdecor.indicators.CyclicIndicator;
 
 public class indicatorAdapter {
 

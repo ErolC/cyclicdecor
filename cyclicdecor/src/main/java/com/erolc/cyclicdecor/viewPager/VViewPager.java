@@ -1,4 +1,4 @@
-package com.erolc.cyclicviewpager.viewPager;
+package com.erolc.cyclicdecor.viewPager;
 
 import android.content.Context;
 import androidx.annotation.NonNull;

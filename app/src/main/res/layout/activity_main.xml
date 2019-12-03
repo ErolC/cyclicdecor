@@ -16,15 +16,21 @@
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <!--<com.erolc.cyclicviewpager.indicators.CyclicIndicator-->
-            <!--android:id="@+id/indicator"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="50dp"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:selectColor="@color/colorAccent"-->
-            <!--app:defaultColor="@color/colorPrimary"/>-->
+        <com.erolc.cyclicdecor.indicators.CyclicIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:selectColor="@color/colorAccent"
+            app:defaultColor="@color/colorPrimary"
+            app:gravity="end"
+            app:interval="20dp"
+            app:itemHeight="5dp"
+            app:itemWidth="5dp"
+            app:shape="circle"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
