@@ -1,6 +1,6 @@
 package com.erolc.cyclicviewpager;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.erolc.cyclicviewpager.adapter.CyclicAdapter;
 import com.erolc.cyclicviewpager.indicators.Indicator;
@@ -50,6 +50,11 @@ public class CyclicDecor {
             return this;
         }
 
+        /**
+         * 是否快速切换
+         * @param isFastSwitch
+         * @return
+         */
         public Builder isFastSwitch(boolean isFastSwitch) {
             this.isFastSwitch = isFastSwitch;
             return this;

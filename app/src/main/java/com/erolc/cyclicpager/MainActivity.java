@@ -1,13 +1,12 @@
 package com.erolc.cyclicpager;
 
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.erolc.cyclicpager.databinding.ActivityMainBinding;
-import com.erolc.cyclicpager.databinding.ViewItemPageBinding;
 import com.erolc.cyclicviewpager.CyclicDecor;
 import com.erolc.cyclicviewpager.adapter.CyclicDBAdapter;
 
@@ -28,15 +27,8 @@ public class MainActivity extends AppCompatActivity {
             public int getLayout(int position) {
                 return R.layout.view_item_page;
             }
-
-            @Override
-            public void onBind(ViewDataBinding binding, Temp data, int position) {
-                super.onBind(binding, data, position);
-                ViewItemPageBinding bind = (ViewItemPageBinding) binding;
-            }
         };
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
 
         String[] page = getResources().getStringArray(R.array.temps);
         List<Temp> temps = new ArrayList<>();

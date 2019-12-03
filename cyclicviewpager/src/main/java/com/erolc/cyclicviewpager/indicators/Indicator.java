@@ -1,6 +1,6 @@
 package com.erolc.cyclicviewpager.indicators;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.erolc.cyclicviewpager.adapter.CyclicAdapter;
 

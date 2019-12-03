@@ -1,8 +1,8 @@
 package com.erolc.cyclicviewpager.adapter;
 
-import android.databinding.BindingAdapter;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
+import androidx.databinding.BindingAdapter;
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
 
 import com.erolc.cyclicviewpager.indicators.CyclicIndicator;
 
