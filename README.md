@@ -1,5 +1,5 @@
 ## cyclicDecor
-一个是viewPager可以无限滚动的库
+一个使viewPager可以无限滚动的库
 
 ## 依赖
 首先对该库进行依赖<br>
@@ -57,4 +57,4 @@ CyclicDecor decor = new CyclicDecor.Builder(binding.pager)//普通的viewPager
             app:shape="circle"
             />
 ```
-具体例子可以查看 [MainActivity]()
+具体例子可以查看 [MainActivity](https://github.com/ErolC/cyclicdecor/blob/master/app/src/main/java/com/erolc/cyclicpager/MainActivity.java)
