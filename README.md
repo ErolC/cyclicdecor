@@ -57,4 +57,8 @@ CyclicDecor decor = new CyclicDecor.Builder(binding.pager)//普通的viewPager
             app:shape="circle"
             />
 ```
+### 垂直方向的Viewpager
+还提供了一个垂直方向的Viewpager：`VViewpager`<br>
+
+### cyclicDecor的例子代码
 具体例子可以查看 [MainActivity](https://github.com/ErolC/cyclicdecor/blob/master/app/src/main/java/com/erolc/cyclicpager/MainActivity.java)
