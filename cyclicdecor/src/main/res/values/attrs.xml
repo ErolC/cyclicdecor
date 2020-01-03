@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CyclicIndicator">
-        <attr name="interval" format="dimension"/>
-        <attr name="itemHeight" format="dimension"/>
-        <attr name="itemWidth" format="dimension"/>
-        <attr name="selectColor" format="color"/>
-        <attr name="defaultColor" format="color"/>
-        <attr name="round" format="boolean"/>
+        <attr name="interval" format="dimension" />
+        <attr name="itemHeight" format="dimension" />
+        <attr name="itemWidth" format="dimension" />
+        <attr name="selectColor" format="color" />
+        <attr name="defaultColor" format="color" />
+        <attr name="round" format="boolean" />
         <attr name="gravity" format="enum">
-            <enum name="start" value="1"/>
-            <enum name="end" value="2"/>
-            <enum name="center" value="0"/>
+            <enum name="start" value="1" />
+            <enum name="end" value="2" />
+            <enum name="center" value="0" />
         </attr>
-        <attr name="shape" format="enum" >
-            <enum name="circle"  value="3"/>
-            <enum name="rect"  value="4"/>
+        <attr name="shape" format="enum">
+            <enum name="circle" value="3" />
+            <enum name="rect" value="4" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="DiffViewPager">
+        <attr name="orientation" format="enum">
+            <enum name="vertical" value="1" />
+            <enum name="horizontal" value="0" />
         </attr>
     </declare-styleable>
 </resources>

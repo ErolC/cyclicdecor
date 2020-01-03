@@ -34,16 +34,14 @@ public class MainActivity extends AppCompatActivity {
             temp.color = Color.parseColor(name);
             temps.add(temp);
         }
-
-        CyclicDecor decor = new CyclicDecor.Builder(binding.pager)
+        new CyclicDecor.Builder(binding.pager)
                 .setAdapter(adapter)
                 .setIndicator(binding.indicator)
-                .automatic(3000)
+                .automatic(false)
                 .isFastSwitch(false)
                 .build();
         adapter.setDataList(temps);
 
-        decor.start();
 
     }
 

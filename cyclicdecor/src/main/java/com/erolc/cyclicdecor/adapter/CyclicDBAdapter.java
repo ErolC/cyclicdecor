@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import com.erolc.cyclicdecor.BR;
 import com.erolc.cyclicdecor.R;
 
+/**
+ * 结合DataBinding的adapter
+ * @param <T> 数据的类型
+ */
 public abstract class CyclicDBAdapter<T> extends CyclicAdapter<T> {
     private LayoutInflater inflate;
 
@@ -21,6 +25,12 @@ public abstract class CyclicDBAdapter<T> extends CyclicAdapter<T> {
     @Override
     public void onBind( View page,T data, int position) {}
 
+    /**
+     * 将数据和页面进行绑定
+     * @param binding 页面
+     * @param data 数据
+     * @param position 位置
+     */
     public void onBind(ViewDataBinding binding, T data, int position) {
         binding.setVariable(BR.item,data);
         binding.executePendingBindings();

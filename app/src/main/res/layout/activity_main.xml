@@ -12,8 +12,9 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <androidx.viewpager.widget.ViewPager
+        <com.erolc.cyclicdecor.viewPager.DiffViewPager
             android:id="@+id/pager"
+            app:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <com.erolc.cyclicdecor.indicators.CyclicIndicator

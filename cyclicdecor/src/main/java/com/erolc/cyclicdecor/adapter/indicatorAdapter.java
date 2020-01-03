@@ -6,6 +6,9 @@ import androidx.annotation.ColorRes;
 
 import com.erolc.cyclicdecor.indicators.CyclicIndicator;
 
+/**
+ * 指示灯的bindingAdapter
+ */
 public class indicatorAdapter {
 
     @BindingAdapter("app:selectColor")

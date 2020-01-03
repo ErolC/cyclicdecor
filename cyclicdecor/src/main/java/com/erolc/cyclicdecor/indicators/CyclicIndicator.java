@@ -13,6 +13,7 @@ import com.erolc.cyclicdecor.adapter.CyclicAdapter;
 
 /**
  * Created by ErolC on 2018/3/21.
+ * 这是循环viewpager特定的指示灯
  */
 
 public class CyclicIndicator extends View implements Indicator {

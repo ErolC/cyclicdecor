@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- *
+ * 使用原生的viewpager，特定的adapter，就可以产生出无限循环的viewpager
  */
 public class CyclicDecor {
     private static final int DEFAULT_PAUSE_TIME = 1000;
@@ -19,7 +19,6 @@ public class CyclicDecor {
     private Indicator indicator;
     private int isAuto = 0;
     private boolean isFastSwitch = true;
-
     private int interval = DEFAULT_PAUSE_TIME;
     private static Runnable runnable;
 
@@ -52,7 +51,8 @@ public class CyclicDecor {
 
         /**
          * 是否快速切换
-         * @param isFastSwitch
+         *
+         * @param isFastSwitch 是否
          * @return
          */
         public Builder isFastSwitch(boolean isFastSwitch) {
@@ -68,7 +68,7 @@ public class CyclicDecor {
          * @return 建造者本身
          */
         public Builder automatic(int interval) {
-            if (interval<700){
+            if (interval < 700) {
                 throw new RuntimeException("interval must be greater than 700ms");
             }
             this.interval = interval;
@@ -84,7 +84,7 @@ public class CyclicDecor {
         public Builder automatic(boolean isAuto) {
             this.isAuto = isAuto;
             if (isAuto)
-            this.interval = DEFAULT_PAUSE_TIME;
+                this.interval = DEFAULT_PAUSE_TIME;
             return this;
         }
 
@@ -92,7 +92,7 @@ public class CyclicDecor {
             CyclicDecor decor = new CyclicDecor(pager);
             decor.indicator = indicator;
             decor.adapter = adapter;
-            decor.isAuto = isAuto?1:interval == 0?-1:0;
+            decor.isAuto = isAuto ? 1 : interval == 0 ? -1 : 0;
             decor.interval = interval;
             decor.isFastSwitch = isFastSwitch;
             decor.config();
@@ -107,9 +107,9 @@ public class CyclicDecor {
                 if (indicator != null) {
                     indicator.setAdapter(adapter);
                 }
-                pager.setCurrentItem(position);
+                pager.setCurrentItem(position);//设置第一个位置
                 if (adapter.getCount() > 4) {
-                    pager.setOffscreenPageLimit(adapter.getRealCount());
+                    pager.setOffscreenPageLimit(adapter.getRealCount());//由于在设置了PageTransformer之后，每个页面都有可能不一样，而且跟位置相关，如果不全部加载，那么在循环的时候会出现新一轮的页面会没有样式。
                 }
             }));
 
@@ -147,6 +147,9 @@ public class CyclicDecor {
         }
     }
 
+    /**
+     * 开始自动切换
+     */
     public void start() {
         if (isAuto == -1) {
             return;
@@ -156,7 +159,7 @@ public class CyclicDecor {
                 int position = pager.getCurrentItem() + 1;
                 if (isFastSwitch) {
                     pager.setCurrentItem(position);
-                }else{
+                } else {
                     try {
                         scrollToItem(position);
                     } catch (NoSuchMethodException e) {
@@ -173,12 +176,23 @@ public class CyclicDecor {
         }
     }
 
+    /**
+     * 通过反射，设置viewpager切换的速度，让自动切换慢一些
+     *
+     * @param position 位置
+     * @throws NoSuchMethodException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     private void scrollToItem(int position) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method scrollToItem = ViewPager.class.getDeclaredMethod("setCurrentItemInternal", int.class, boolean.class, boolean.class, int.class);
         scrollToItem.setAccessible(true);
-        scrollToItem.invoke(pager,position,true,false,1);
+        scrollToItem.invoke(pager, position, true, false, 1);
     }
 
+    /**
+     * 暂停自动切换
+     */
     public void stop() {
         pager.removeCallbacks(runnable);
         runnable = null;
