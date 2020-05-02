@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 /**
  * 使用原生的viewpager，特定的adapter，就可以产生出无限循环的viewpager
  */
-public class CyclicDecor {
+public class CyclicControl {
     private static final int DEFAULT_PAUSE_TIME = 1000;
     private CyclicAdapter adapter;
     private ViewPager pager;
@@ -23,7 +23,7 @@ public class CyclicDecor {
     private static Runnable runnable;
 
 
-    private CyclicDecor(ViewPager pager) {
+    private CyclicControl(ViewPager pager) {
         this.pager = pager;
     }
 
@@ -53,7 +53,7 @@ public class CyclicDecor {
          * 是否快速切换
          *
          * @param isFastSwitch 是否
-         * @return
+         * @return this
          */
         public Builder isFastSwitch(boolean isFastSwitch) {
             this.isFastSwitch = isFastSwitch;
@@ -88,8 +88,8 @@ public class CyclicDecor {
             return this;
         }
 
-        public CyclicDecor build() {
-            CyclicDecor decor = new CyclicDecor(pager);
+        public CyclicControl build() {
+            CyclicControl decor = new CyclicControl(pager);
             decor.indicator = indicator;
             decor.adapter = adapter;
             decor.isAuto = isAuto ? 1 : interval == 0 ? -1 : 0;
@@ -180,9 +180,6 @@ public class CyclicDecor {
      * 通过反射，设置viewpager切换的速度，让自动切换慢一些
      *
      * @param position 位置
-     * @throws NoSuchMethodException
-     * @throws InvocationTargetException
-     * @throws IllegalAccessException
      */
     private void scrollToItem(int position) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method scrollToItem = ViewPager.class.getDeclaredMethod("setCurrentItemInternal", int.class, boolean.class, boolean.class, int.class);

@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.erolc.cyclicdecor.CyclicDecor;
+import com.erolc.cyclicdecor.CyclicControl;
 import com.erolc.cyclicpager.databinding.ActivityMainBinding;
 import com.erolc.cyclicdecor.adapter.CyclicDBAdapter;
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             temp.color = Color.parseColor(name);
             temps.add(temp);
         }
-        new CyclicDecor.Builder(binding.pager)
+        CyclicControl build = new CyclicControl.Builder(binding.pager)
                 .setAdapter(adapter)
                 .setIndicator(binding.indicator)
                 .automatic(false)

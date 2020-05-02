@@ -21,7 +21,7 @@
 
 ## 使用
 ```
-CyclicDecor decor = new CyclicDecor.Builder(binding.pager)//普通的viewPager
+CyclicControl decor = new CyclicControl.Builder(binding.pager)//普通的viewPager
                 .setAdapter(adapter)//库提供的CyclicAdapter的子类
                 .setIndicator(binding.indicator)//库也提供了指示灯CyclicIndicator
                 .automatic(3000)//可自动滑动，时间间隔是3s，如果设置为false则不会自动滑动,设置为true则会在创建完成时自动滑动而无需调用start，时间间隔为1s

@@ -1,5 +1,7 @@
 package com.erolc.cyclicdecor.pageChanges;
 
+import android.util.Log;
+
 import androidx.viewpager.widget.ViewPager;
 
 import com.erolc.cyclicdecor.adapter.CyclicAdapter;
@@ -45,6 +47,7 @@ public abstract class CyclicPageChangeListener implements ViewPager.OnPageChange
         //1：移动状态，有手指状态
         //2：自由移动状态，无手指状态
         onPageStateChange(i);
+        Log.e("tag", "onPageScrollStateChanged: "+i);
         if (i == 0){
             if (currentPosition == cyclic.getFirstSkipPosition()){
                 onPageChange(cyclic.getLastSkipPosition()-1);
