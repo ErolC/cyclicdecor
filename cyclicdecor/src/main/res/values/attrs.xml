@@ -6,7 +6,7 @@
         <attr name="itemWidth" format="dimension" />
         <attr name="selectColor" format="color" />
         <attr name="defaultColor" format="color" />
-        <attr name="round" format="boolean" />
+        <attr name="cyclicRound" format="boolean" />
         <attr name="gravity" format="enum">
             <enum name="start" value="1" />
             <enum name="end" value="2" />
